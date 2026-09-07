@@ -113,7 +113,12 @@ h1 { font-size: 34px; font-weight: 700; margin: 48px 0 14px; }
 h2 { font-size: 22px; font-weight: 600; margin: 48px 0 10px; }
 h3 { font-size: 17px; font-weight: 600; margin: 28px 0 6px; }
 
-.chapeau { font-size: 18px; color: var(--texte-doux); margin: 0 0 8px; }
+.chapeau {
+  font-size: 18px;
+  font-weight: 500;
+  color: var(--texte-doux);
+  margin: 0 0 8px;
+}
 
 p { margin: 0 0 16px; }
 a { color: var(--accent); }
