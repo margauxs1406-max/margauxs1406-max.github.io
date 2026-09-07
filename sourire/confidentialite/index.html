@@ -16,37 +16,39 @@
 <script src="/script.js" defer></script>
 </head>
 <body>
-<div class="page" id="haut">
+<div class="entete" id="haut">
+  <div class="entete-interieur">
+    <a class="logo" href="/" aria-label="MxS Studio, accueil">
+      <img class="clair" src="/assets/img/mxs-bloc.svg" alt="MxS Studio" width="63" height="34">
+      <img class="sombre" src="/assets/img/mxs-bloc-sombre.svg" alt="MxS Studio" width="63" height="34">
+    </a>
+    <nav>
+      <a href="/a-propos/">À propos</a>
+      <a href="/methode/">Méthode</a>
+      <details class="menu">
+        <summary>Produits</summary>
+        <ul>
+          <li><a href="/sourire/">
+            <img src="/assets/img/icone-sourire.png" alt="" width="30" height="30">
+            <span class="nom">Sourire<span>Souvenirs heureux</span></span>
+          </a></li>
+          <li><a href="/exercise-kitchen/">
+            <img src="/assets/img/icone-ek.png" alt="" width="30" height="30">
+            <span class="nom">Exercise Kitchen<span>Salle de sport</span></span>
+          </a></li>
+        </ul>
+      </details>
+      <a href="/contact/">Contact</a>
+    </nav>
+    <span class="langues"><a href="/sourire/confidentialite/" hreflang="fr" aria-current="true">FR</a><a href="/en/sourire/privacy/" hreflang="en">EN</a><a href="/es/sourire/privacidad/" hreflang="es">ES</a></span>
+  </div>
+</div>
+
+<div class="page">
 
 <!-- TODO Margaux : comparer avec la version hébergée sur GitHub, garder une
      seule source de vérité, et faire pointer les deux fiches de store vers
      cette URL. -->
-
-<header class="bandeau">
-  <a class="logo" href="/" aria-label="MxS Studio, accueil">
-    <img class="clair" src="/assets/img/mxs-bloc.svg" alt="MxS Studio" width="63" height="34">
-    <img class="sombre" src="/assets/img/mxs-bloc-sombre.svg" alt="MxS Studio" width="63" height="34">
-  </a>
-  <nav>
-    <details class="menu">
-      <summary>Produits</summary>
-      <ul>
-        <li><a href="/sourire/">
-          <img src="/assets/img/icone-sourire.png" alt="" width="30" height="30">
-          <span class="nom">Sourire<span>Souvenirs heureux</span></span>
-        </a></li>
-        <li><a href="/exercise-kitchen/">
-          <img src="/assets/img/icone-ek.png" alt="" width="30" height="30">
-          <span class="nom">Exercise Kitchen<span>Salle de sport</span></span>
-        </a></li>
-      </ul>
-    </details>
-    <a href="/methode/">Méthode</a>
-    <a href="/a-propos/">À propos</a>
-    <a href="/contact/">Contact</a>
-  </nav>
-  <span class="langues"><a href="/sourire/confidentialite/" hreflang="fr" aria-current="true">FR</a><a href="/en/sourire/privacy/" hreflang="en">EN</a><a href="/es/sourire/privacidad/" hreflang="es">ES</a></span>
-</header>
 
 <main>
   <h1>Politique de confidentialité</h1>

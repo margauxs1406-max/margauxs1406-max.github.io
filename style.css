@@ -52,44 +52,44 @@ body {
 .page { max-width: 760px; margin: 0 auto; padding: 0 24px; }
 
 /* ---------------------------------------------------------------- bandeau */
-
-.bandeau {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 24px;
-  padding: 20px 0 16px;
-  border-bottom: 1px solid var(--filet);
-  /* Collant plutôt que fixe : le bandeau reste dans le flux, donc la première
-     ligne de la page n'a pas besoin d'une marge compensatoire, et il se colle
-     en haut dès qu'on défile. Le fond opaque est indispensable, sinon le texte
-     défile en transparence derrière lui. */
+/* Le bandeau est sorti de la colonne de texte et posé directement sous `body` :
+   c'est la seule position où `sticky` tient à coup sûr, sans dépendre des
+   réglages de débordement d'un parent. Il occupe toute la largeur, son contenu
+   reste aligné sur la colonne. */
+.entete {
   position: sticky;
   top: 0;
   z-index: 60;
   background: var(--fond);
+  border-bottom: 1px solid var(--filet);
+}
+.entete-interieur {
+  max-width: 760px;
+  margin: 0 auto;
+  padding: 14px 24px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
 }
 
-.bandeau .logo { display: block; }
-.bandeau .logo img { height: 34px; width: auto; display: block; }
+.logo { display: block; }
+.logo img { height: 34px; width: auto; display: block; }
 
 /* Deux logos dans le HTML, un seul visible : le SVG porte ses couleurs en dur
-   et une image ne se recolore pas en CSS.
-   Les sélecteurs reprennent `.bandeau .logo img` : écrit plus court, la règle
-   d'affichage ci-dessus l'emportait et les deux logos se superposaient. */
-.bandeau .logo img.sombre { display: none; }
+   et une image ne se recolore pas en CSS. */
+.logo img.sombre { display: none; }
 @media (prefers-color-scheme: dark) {
-  .bandeau .logo img.clair { display: none; }
-  .bandeau .logo img.sombre { display: block; }
+  .logo img.clair { display: none; }
+  .logo img.sombre { display: block; }
 }
 
-nav { display: flex; gap: 22px; font-size: 15px; }
-nav a { color: var(--texte-doux); text-decoration: none; }
-nav a:hover, nav a:focus { color: var(--accent); text-decoration: underline; }
-nav a[aria-current="page"] { color: var(--texte); }
+nav { display: flex; align-items: center; gap: 22px; font-size: 15px; }
+nav > a { color: var(--texte-doux); text-decoration: none; }
+nav > a:hover, nav > a:focus { color: var(--accent); text-decoration: underline; }
+nav > a[aria-current="page"] { color: var(--texte); }
 
-/* Sélecteur de langue : trois codes, séparés par un point médian dessiné en
-   CSS pour éviter des caractères parasites dans le texte de la page. */
+/* Sélecteur de langue. */
 .langues { display: flex; align-items: center; font-size: 13px; }
 .langues a {
   color: var(--texte-doux);
@@ -109,7 +109,7 @@ h1, h2, h3 {
   letter-spacing: -0.01em;
 }
 
-h1 { font-size: 34px; font-weight: 700; margin: 56px 0 14px; }
+h1 { font-size: 34px; font-weight: 700; margin: 48px 0 14px; }
 h2 { font-size: 22px; font-weight: 600; margin: 48px 0 10px; }
 h3 { font-size: 17px; font-weight: 600; margin: 28px 0 6px; }
 
@@ -207,8 +207,9 @@ footer {
 footer a { color: var(--texte-doux); }
 
 @media (max-width: 560px) {
-  h1 { font-size: 28px; margin-top: 40px; }
-  .bandeau { flex-direction: column; align-items: flex-start; gap: 14px; }
+  h1 { font-size: 28px; margin-top: 34px; }
+  .entete-interieur { flex-wrap: wrap; gap: 10px 16px; padding: 12px 20px; }
+  nav { gap: 16px; font-size: 14px; }
 }
 
 /* =========================================================================
@@ -273,9 +274,12 @@ footer a { color: var(--texte-doux); }
 .menu li img { width: 30px; height: 30px; border-radius: 8px; flex: none; }
 .menu li .nom span { display: block; font-size: 12px; color: var(--texte-doux); }
 
-/* Le bandeau passe au-dessus du contenu : sans cela, le panneau ouvert glissait
-   derrière la bannière et derrière les images du carrousel. */
-.bandeau { position: relative; z-index: 60; }
+/* Les pages anglaises et espagnoles portent encore l'ancien bandeau dans la
+   colonne : cette règle les garde correctes en attendant leur refonte. */
+.bandeau { position: relative; z-index: 60; display: flex; align-items: center;
+  justify-content: space-between; gap: 24px; padding: 20px 0 16px;
+  border-bottom: 1px solid var(--filet); }
+.bandeau .logo img { height: 34px; width: auto; display: block; }
 
 /* ------------------------------------------------------- titres d'app */
 .titre-app { display: flex; align-items: center; gap: 16px; }
@@ -391,7 +395,7 @@ footer a { color: var(--texte-doux); }
   border: 1px solid var(--filet);
   border-radius: 50%;
   background: var(--carte);
-  color: var(--texte);
+  color: var(--ardoise);
   font-size: 19px;
   line-height: 1;
   text-decoration: none;
