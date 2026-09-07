@@ -1,0 +1,197 @@
+/* MxS Studio — feuille de style unique.
+   Aucune requête vers un serveur tiers : la police est servie depuis le site,
+   il n'y a ni script ni traceur, donc rien à déclarer en matière de cookies. */
+
+@font-face {
+  font-family: "Space Grotesk";
+  src: url("/assets/fonts/space-grotesk-var.woff2") format("woff2-variations");
+  font-weight: 300 700;
+  font-display: swap;
+}
+
+:root {
+  --encre: #16222B;
+  --ardoise: #2E6E7E;
+  --craie: #F7F5F2;
+  --sable: #E2DCD4;
+  --gris: #5C6B73;
+
+  --fond: var(--craie);
+  --texte: var(--encre);
+  --texte-doux: var(--gris);
+  --accent: var(--ardoise);
+  --filet: var(--sable);
+  --carte: #FFFFFF;
+}
+
+/* Le mode sombre suit le réglage du système, comme les applications. */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --fond: #101A20;
+    --texte: #E8EEF1;
+    --texte-doux: #97A8B1;
+    --accent: #7FB8C4;
+    --filet: #263640;
+    --carte: #16222B;
+  }
+}
+
+* { box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  margin: 0;
+  background: var(--fond);
+  color: var(--texte);
+  font: 16px/1.65 -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+        system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+.page { max-width: 760px; margin: 0 auto; padding: 0 24px; }
+
+/* ---------------------------------------------------------------- bandeau */
+
+.bandeau {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  padding: 28px 0 22px;
+  border-bottom: 1px solid var(--filet);
+}
+
+.bandeau .logo { display: block; }
+.bandeau .logo img { height: 34px; width: auto; display: block; }
+
+/* Deux logos dans le HTML, un seul visible : le SVG porte ses couleurs en dur
+   et une image ne se recolore pas en CSS.
+   Les sélecteurs reprennent `.bandeau .logo img` : écrit plus court, la règle
+   d'affichage ci-dessus l'emportait et les deux logos se superposaient. */
+.bandeau .logo img.sombre { display: none; }
+@media (prefers-color-scheme: dark) {
+  .bandeau .logo img.clair { display: none; }
+  .bandeau .logo img.sombre { display: block; }
+}
+
+nav { display: flex; gap: 22px; font-size: 15px; }
+nav a { color: var(--texte-doux); text-decoration: none; }
+nav a:hover, nav a:focus { color: var(--accent); text-decoration: underline; }
+nav a[aria-current="page"] { color: var(--texte); }
+
+/* Sélecteur de langue : trois codes, séparés par un point médian dessiné en
+   CSS pour éviter des caractères parasites dans le texte de la page. */
+.langues { display: flex; align-items: center; font-size: 13px; }
+.langues a {
+  color: var(--texte-doux);
+  text-decoration: none;
+  letter-spacing: .04em;
+  padding: 0 8px;
+}
+.langues a + a { border-left: 1px solid var(--filet); }
+.langues a:hover, .langues a:focus { color: var(--accent); }
+.langues a[aria-current="true"] { color: var(--texte); font-weight: 600; }
+
+/* ------------------------------------------------------------------ texte */
+
+h1, h2, h3 {
+  font-family: "Space Grotesk", -apple-system, "Segoe UI", system-ui, sans-serif;
+  line-height: 1.25;
+  letter-spacing: -0.01em;
+}
+
+h1 { font-size: 34px; font-weight: 700; margin: 56px 0 14px; }
+h2 { font-size: 22px; font-weight: 600; margin: 48px 0 10px; }
+h3 { font-size: 17px; font-weight: 600; margin: 28px 0 6px; }
+
+.chapeau { font-size: 18px; color: var(--texte-doux); margin: 0 0 8px; }
+
+p { margin: 0 0 16px; }
+a { color: var(--accent); }
+ul, ol { padding-left: 22px; }
+li { margin-bottom: 8px; }
+
+strong { font-weight: 600; }
+
+hr { border: 0; border-top: 1px solid var(--filet); margin: 48px 0; }
+
+.mention { font-size: 14px; color: var(--texte-doux); }
+
+/* ------------------------------------------------------------------ blocs */
+
+.apps { display: grid; gap: 18px; margin: 32px 0 0; }
+
+.app {
+  display: block;
+  padding: 22px 24px;
+  background: var(--carte);
+  border: 1px solid var(--filet);
+  border-radius: 12px;
+  text-decoration: none;
+  color: inherit;
+}
+.app:hover, .app:focus { border-color: var(--accent); }
+.app h2 { margin: 0 0 4px; font-size: 19px; }
+.app p { margin: 0; color: var(--texte-doux); font-size: 15px; }
+.app .etat {
+  display: inline-block;
+  margin-top: 12px;
+  font-size: 12px;
+  letter-spacing: .06em;
+  text-transform: uppercase;
+  color: var(--accent);
+}
+
+.faq { margin-top: 24px; }
+.faq details {
+  border-bottom: 1px solid var(--filet);
+  padding: 14px 0;
+}
+.faq summary {
+  cursor: pointer;
+  font-weight: 600;
+  font-family: "Space Grotesk", system-ui, sans-serif;
+}
+.faq summary::marker { color: var(--accent); }
+.faq details p { margin: 10px 0 2px; color: var(--texte-doux); }
+
+.encart {
+  background: var(--carte);
+  border: 1px solid var(--filet);
+  border-left: 3px solid var(--accent);
+  border-radius: 8px;
+  padding: 18px 22px;
+  margin: 28px 0;
+}
+.encart p:last-child { margin-bottom: 0; }
+
+dl { margin: 24px 0; }
+dt {
+  font-size: 12px;
+  letter-spacing: .07em;
+  text-transform: uppercase;
+  color: var(--texte-doux);
+  margin-top: 18px;
+}
+dd { margin: 2px 0 0; }
+
+/* ------------------------------------------------------------------- pied */
+
+footer {
+  margin-top: 80px;
+  padding: 26px 0 48px;
+  border-top: 1px solid var(--filet);
+  font-size: 14px;
+  color: var(--texte-doux);
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 22px;
+  justify-content: space-between;
+}
+footer a { color: var(--texte-doux); }
+
+@media (max-width: 560px) {
+  h1 { font-size: 28px; margin-top: 40px; }
+  .bandeau { flex-direction: column; align-items: flex-start; gap: 14px; }
+}
