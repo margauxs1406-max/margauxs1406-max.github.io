@@ -1,0 +1,128 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Contact — MxS Studio</title>
+<meta name="description" content="Demandez un devis pour votre application, ou obtenez de l'aide sur Sourire et Exercise Kitchen.">
+<link rel="stylesheet" href="/style.css">
+<link rel="icon" href="/assets/img/favicon.ico" sizes="any">
+<link rel="icon" href="/assets/img/favicon-32.png" type="image/png">
+<link rel="apple-touch-icon" href="/assets/img/apple-touch-icon-180.png">
+</head>
+<body>
+<div class="page">
+
+<!-- TODO Margaux : les deux formulaires passent par FormSubmit, qui relaie le
+     message vers ta boîte. À la toute première soumission, FormSubmit t'envoie
+     un mail d'activation : clique le lien une fois, sinon rien n'arrive.
+     Fais ce premier envoi toi-même, depuis le site en ligne. -->
+
+<header class="bandeau">
+  <a class="logo" href="/" aria-label="MxS Studio, accueil">
+    <img class="clair" src="/assets/img/mxs-bloc.svg" alt="MxS Studio" width="63" height="34">
+    <img class="sombre" src="/assets/img/mxs-bloc-sombre.svg" alt="MxS Studio" width="63" height="34">
+  </a>
+  <nav>
+    <details class="menu">
+      <summary>Produits</summary>
+      <ul>
+        <li><a href="/sourire/">
+          <img src="/assets/img/icone-sourire.png" alt="" width="30" height="30">
+          <span class="nom">Sourire<span>Souvenirs heureux</span></span>
+        </a></li>
+        <li><a href="/exercise-kitchen/">
+          <img src="/assets/img/icone-ek.png" alt="" width="30" height="30">
+          <span class="nom">Exercise Kitchen<span>Salle de sport</span></span>
+        </a></li>
+      </ul>
+    </details>
+    <a href="/contact/" aria-current="page">Contact</a>
+  </nav>
+</header>
+
+<main>
+  <h1>Contact</h1>
+  <p class="chapeau">Un projet à chiffrer, ou une question sur une application
+  déjà installée ? Les deux formulaires ci-dessous arrivent directement dans ma
+  boîte, et c'est moi qui réponds.</p>
+
+  <h2>Demandez un devis</h2>
+  <p>Décrivez votre besoin en quelques lignes, même à l'état d'idée. Je vous
+  réponds sous deux jours ouvrés avec un périmètre, un délai et un prix.</p>
+
+  <form class="formulaire" action="https://formsubmit.co/contact@mxsstudio.com" method="POST">
+    <input type="hidden" name="_subject" value="Demande de devis — mxsstudio.com">
+    <input type="hidden" name="_next" value="https://mxsstudio.com/contact/merci/">
+    <input type="hidden" name="_template" value="table">
+    <input type="hidden" name="_captcha" value="false">
+    <div class="pot-de-miel" aria-hidden="true">
+      <label for="devis-piege">Ne rien écrire ici</label>
+      <input type="text" id="devis-piege" name="_honey" tabindex="-1" autocomplete="off">
+    </div>
+
+    <label for="devis-nom">Votre nom</label>
+    <input type="text" id="devis-nom" name="nom" required autocomplete="name">
+
+    <label for="devis-email">Votre adresse e-mail</label>
+    <input type="email" id="devis-email" name="email" required autocomplete="email">
+
+    <label for="devis-projet">Votre projet</label>
+    <textarea id="devis-projet" name="projet" required
+      placeholder="À qui s'adresse l'application, à quoi doit-elle servir, sous quel délai ?"></textarea>
+
+    <button type="submit">Envoyer ma demande</button>
+  </form>
+
+  <h2>Besoin d'assistance ?</h2>
+  <p>Un bug, une question sur une fonctionnalité, une demande de suppression de
+  données. Indiquez l'application concernée, ça me fait gagner un
+  aller-retour.</p>
+
+  <form class="formulaire" action="https://formsubmit.co/support@mxsstudio.com" method="POST">
+    <input type="hidden" name="_subject" value="Demande d'assistance — mxsstudio.com">
+    <input type="hidden" name="_next" value="https://mxsstudio.com/contact/merci/">
+    <input type="hidden" name="_template" value="table">
+    <input type="hidden" name="_captcha" value="false">
+    <div class="pot-de-miel" aria-hidden="true">
+      <label for="aide-piege">Ne rien écrire ici</label>
+      <input type="text" id="aide-piege" name="_honey" tabindex="-1" autocomplete="off">
+    </div>
+
+    <label for="aide-produit">Application concernée</label>
+    <select id="aide-produit" name="application" required>
+      <option value="">Choisissez une application</option>
+      <option value="Sourire">Sourire</option>
+      <option value="Exercise Kitchen">Exercise Kitchen</option>
+      <option value="Autre">Autre sujet</option>
+    </select>
+
+    <label for="aide-appareil">Votre appareil (facultatif)</label>
+    <input type="text" id="aide-appareil" name="appareil"
+      placeholder="iPhone 13, Samsung Galaxy S22, iPad…">
+
+    <label for="aide-email">Votre adresse e-mail</label>
+    <input type="email" id="aide-email" name="email" required autocomplete="email">
+
+    <label for="aide-message">Votre message</label>
+    <textarea id="aide-message" name="message" required
+      placeholder="Que faisiez-vous au moment où le problème est survenu ?"></textarea>
+
+    <button type="submit">Envoyer ma demande</button>
+  </form>
+
+  <p class="mention">Les messages envoyés par ces formulaires sont acheminés par
+  le service FormSubmit, qui les transmet à ma boîte e-mail sans les conserver
+  ni les exploiter. Aucune information n'est enregistrée sur ce site, qui ne
+  dépose aucun cookie. Vous pouvez aussi écrire directement à
+  <a href="mailto:contact@mxsstudio.com">contact@mxsstudio.com</a>.</p>
+</main>
+
+<footer>
+  <span>MxS Studio — entreprise individuelle</span>
+  <span><a href="/mentions-legales/">Mentions légales</a></span>
+</footer>
+
+</div>
+</body>
+</html>

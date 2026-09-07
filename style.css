@@ -195,3 +195,198 @@ footer a { color: var(--texte-doux); }
   h1 { font-size: 28px; margin-top: 40px; }
   .bandeau { flex-direction: column; align-items: flex-start; gap: 14px; }
 }
+
+/* =========================================================================
+   Composants ajoutés avec la refonte : menu Produits, carrousels, formulaires.
+   ========================================================================= */
+
+/* ------------------------------------------------- menu déroulant Produits */
+/* `details` plutôt qu'un script : le menu s'ouvre et se ferme sans une ligne
+   de JavaScript, et reste utilisable au clavier. Seule concession : il ne se
+   referme pas en cliquant ailleurs dans la page. */
+.menu { position: relative; }
+.menu > summary {
+  cursor: pointer;
+  list-style: none;
+  color: var(--texte-doux);
+}
+.menu > summary::-webkit-details-marker { display: none; }
+.menu > summary::after {
+  content: "";
+  display: inline-block;
+  width: 6px; height: 6px;
+  margin-left: 7px;
+  vertical-align: 2px;
+  border-right: 1.5px solid currentColor;
+  border-bottom: 1.5px solid currentColor;
+  transform: rotate(45deg);
+}
+.menu[open] > summary { color: var(--accent); }
+.menu[open] > summary::after { transform: rotate(-135deg); vertical-align: -1px; }
+.menu ul {
+  position: absolute;
+  top: calc(100% + 12px);
+  left: -12px;
+  z-index: 20;
+  min-width: 230px;
+  margin: 0;
+  padding: 6px;
+  list-style: none;
+  background: var(--carte);
+  border: 1px solid var(--filet);
+  border-radius: 12px;
+  box-shadow: 0 12px 28px rgba(0,0,0,.10);
+}
+.menu li { margin: 0; }
+.menu li a {
+  display: flex;
+  align-items: center;
+  gap: 11px;
+  padding: 9px 10px;
+  border-radius: 8px;
+  color: var(--texte);
+  text-decoration: none;
+  font-size: 15px;
+}
+.menu li a:hover, .menu li a:focus { background: var(--fond); }
+.menu li img { width: 30px; height: 30px; border-radius: 8px; }
+.menu li .nom span { display: block; font-size: 12px; color: var(--texte-doux); }
+
+/* ------------------------------------------------------- titres d'app */
+.titre-app { display: flex; align-items: center; gap: 16px; }
+.titre-app img { width: 58px; height: 58px; border-radius: 14px; flex: none; }
+
+/* --------------------------------------------------- bannière et carrousel */
+.banniere {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: 14px;
+  margin: 26px 0 8px;
+}
+
+/* Défilement natif avec accroche : pas de bibliothèque, pas de boutons à
+   maintenir, et le geste est celui que tout le monde connaît déjà. */
+.carrousel {
+  display: flex;
+  gap: 14px;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  padding: 4px 0 14px;
+  margin: 0 -24px;
+  padding-left: 24px;
+  padding-right: 24px;
+  scrollbar-width: thin;
+}
+.carrousel img {
+  scroll-snap-align: center;
+  height: 400px;
+  width: auto;
+  border-radius: 12px;
+  border: 1px solid var(--filet);
+  flex: none;
+}
+.legende { font-size: 13px; color: var(--texte-doux); margin: 0 0 30px; }
+
+/* ------------------------------------------------------ boutons de store */
+.stores { display: flex; flex-wrap: wrap; gap: 14px; margin: 24px 0 8px; }
+.store {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 15px 26px;
+  border-radius: 12px;
+  background: var(--texte);
+  color: var(--fond);
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 16px;
+}
+.store:hover, .store:focus { opacity: .88; }
+.store.bientot {
+  background: transparent;
+  color: var(--texte-doux);
+  border: 1.5px dashed var(--filet);
+  font-weight: 500;
+}
+.dispo { font-size: 14px; color: var(--texte-doux); }
+
+/* --------------------------------------------------------- les étapes */
+.etapes { counter-reset: etape; list-style: none; padding: 0; margin: 26px 0 0; }
+.etapes li {
+  counter-increment: etape;
+  position: relative;
+  margin: 0 0 0 14px;
+  padding: 0 0 26px 40px;
+  border-left: 2px solid var(--filet);
+}
+.etapes li::before {
+  content: counter(etape);
+  position: absolute;
+  left: -15px;
+  top: -3px;
+  width: 28px; height: 28px;
+  border-radius: 50%;
+  background: var(--accent);
+  color: #fff;
+  font-size: 13px;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.etapes li:last-child { border-left-color: transparent; padding-bottom: 0; }
+.etapes b { display: block; font-family: "Space Grotesk", system-ui, sans-serif; }
+.etapes span { color: var(--texte-doux); font-size: 15px; }
+
+/* ----------------------------------------------------------- repères */
+.reperes { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 14px; margin: 26px 0; }
+.repere { padding: 18px 20px; background: var(--carte); border: 1px solid var(--filet); border-radius: 12px; }
+.repere b { display: block; font-family: "Space Grotesk", system-ui, sans-serif; font-size: 16px; }
+.repere span { font-size: 14px; color: var(--texte-doux); }
+
+/* -------------------------------------------------------- formulaires */
+.formulaire {
+  background: var(--carte);
+  border: 1px solid var(--filet);
+  border-radius: 12px;
+  padding: 6px 24px 26px;
+  margin: 18px 0 40px;
+}
+.formulaire label { display: block; font-size: 13px; font-weight: 600; margin: 18px 0 6px; }
+.formulaire input, .formulaire select, .formulaire textarea {
+  width: 100%;
+  padding: 11px 13px;
+  border: 1px solid var(--filet);
+  border-radius: 8px;
+  background: var(--fond);
+  color: var(--texte);
+  font: inherit;
+  font-size: 15px;
+}
+.formulaire textarea { min-height: 140px; resize: vertical; }
+.formulaire input:focus, .formulaire select:focus, .formulaire textarea:focus {
+  outline: 2px solid var(--accent);
+  outline-offset: 1px;
+  border-color: transparent;
+}
+.formulaire button {
+  margin-top: 22px;
+  padding: 13px 30px;
+  border: 0;
+  border-radius: 30px;
+  background: var(--accent);
+  color: #fff;
+  font: inherit;
+  font-weight: 600;
+  font-size: 15px;
+  cursor: pointer;
+}
+.formulaire button:hover { opacity: .9; }
+/* Piège à robots : invisible pour les humains, rempli par les automates. */
+.pot-de-miel { position: absolute; left: -9999px; width: 1px; height: 1px; overflow: hidden; }
+
+@media (max-width: 560px) {
+  .carrousel img { height: 300px; }
+  .titre-app img { width: 46px; height: 46px; }
+}

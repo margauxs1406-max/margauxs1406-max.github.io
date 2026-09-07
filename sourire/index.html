@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Sourire — ta collection de souvenirs heureux</title>
-<meta name="description" content="Sourire garde tes souvenirs heureux dans un bocal et t'en ressort un au hasard. Privé, hors ligne et sans publicité.">
+<meta name="description" content="Sourire garde tes souvenirs heureux dans un bocal et t'en ressort un au hasard. Privé, hors ligne et sans publicité, sur iPhone, iPad et Android.">
 <link rel="stylesheet" href="/style.css">
 <link rel="icon" href="/assets/img/favicon.ico" sizes="any">
 <link rel="icon" href="/assets/img/favicon-32.png" type="image/png">
@@ -12,6 +12,7 @@
 <meta property="og:title" content="Sourire">
 <meta property="og:description" content="Ta collection de souvenirs heureux. Privée, hors ligne et sans pub.">
 <meta property="og:url" content="https://mxsstudio.com/sourire/">
+<meta property="og:image" content="https://mxsstudio.com/assets/img/banniere-sourire.webp">
 <meta property="og:type" content="website">
 <link rel="alternate" hreflang="fr" href="https://mxsstudio.com/sourire/">
 <link rel="alternate" hreflang="en" href="https://mxsstudio.com/en/sourire/">
@@ -21,27 +22,62 @@
 <body>
 <div class="page">
 
+<!-- TODO Margaux : remplacer les deux liens de store par les vraies URL dès que
+     les fiches sont publiées, et retirer la classe « bientot ». -->
+
 <header class="bandeau">
   <a class="logo" href="/" aria-label="MxS Studio, accueil">
     <img class="clair" src="/assets/img/mxs-bloc.svg" alt="MxS Studio" width="63" height="34">
     <img class="sombre" src="/assets/img/mxs-bloc-sombre.svg" alt="MxS Studio" width="63" height="34">
   </a>
   <nav>
-    <a href="/sourire/" aria-current="page">Sourire</a>
-    <a href="/sourire/support/">Assistance</a>
-    <a href="/sourire/confidentialite/">Confidentialité</a>
+    <details class="menu">
+      <summary>Produits</summary>
+      <ul>
+        <li><a href="/sourire/">
+          <img src="/assets/img/icone-sourire.png" alt="" width="30" height="30">
+          <span class="nom">Sourire<span>Souvenirs heureux</span></span>
+        </a></li>
+        <li><a href="/exercise-kitchen/">
+          <img src="/assets/img/icone-ek.png" alt="" width="30" height="30">
+          <span class="nom">Exercise Kitchen<span>Salle de sport</span></span>
+        </a></li>
+      </ul>
+    </details>
+    <a href="/contact/">Contact</a>
   </nav>
   <span class="langues"><a href="/sourire/" hreflang="fr" aria-current="true">FR</a><a href="/en/sourire/" hreflang="en">EN</a><a href="/es/sourire/" hreflang="es">ES</a></span>
 </header>
 
 <main>
-  <h1>Sourire</h1>
+  <h1 class="titre-app">
+    <img src="/assets/img/icone-sourire.png" alt="" width="58" height="58">
+    Sourire
+  </h1>
   <p class="chapeau">Ta collection de souvenirs heureux. Privée, hors ligne et
   sans pub.</p>
 
+  <img class="banniere" src="/assets/img/banniere-sourire.webp"
+    alt="Sourire, le bonheur dans un bocal" width="1400" height="684">
+
   <p>On oublie vite les bons moments. Sourire les garde : un mot, une photo, dix
-  secondes, et le souvenir est dans le bocal. Les jours gris, il t'en ressort un
-  au hasard.</p>
+  secondes, et le souvenir est dans le bocal. Les jours gris, touche le bocal et
+  il t'en ressort un au hasard.</p>
+
+  <div class="stores">
+    <a class="store bientot" href="/contact/">Bientôt sur l'App Store</a>
+    <a class="store bientot" href="/contact/">Bientôt sur Google Play</a>
+  </div>
+  <p class="dispo">iPhone, iPad et Android. Application gratuite, version
+  Premium facultative pour débloquer tous les décors de notes.</p>
+
+  <h2>En images</h2>
+  <div class="carrousel">
+    <img src="/assets/img/sourire-1.webp" alt="Écran d'accueil de Sourire, avec le bocal à souvenirs" width="1600" height="1731" loading="lazy">
+    <img src="/assets/img/sourire-2.webp" alt="Collecte des souvenirs et choix du décor d'une note" width="1600" height="1731" loading="lazy">
+    <img src="/assets/img/sourire-3.webp" alt="Badges débloqués et partage d'un souvenir" width="1600" height="1154" loading="lazy">
+  </div>
+  <p class="legende">Faites glisser pour voir les écrans suivants.</p>
 
   <h2>Ce que fait l'application</h2>
   <ul>
@@ -49,7 +85,7 @@
     avec ou sans photo. Une notification peut te le rappeler, à la fréquence que
     tu choisis.</li>
     <li><strong>Tirer au hasard</strong> : touche le bocal, il remonte un
-    souvenir que tu avais oublié.</li>
+    souvenir que tu avais oublié. Incline le téléphone et regarde-les rouler.</li>
     <li><strong>Débloquer des badges</strong> : du premier souvenir jusqu'au
     titre de Légende de Sourire.</li>
     <li><strong>Partager</strong> : envoyer un souvenir à un proche, par
@@ -67,15 +103,64 @@
   toi-même. Le détail figure dans la
   <a href="/sourire/confidentialite/">politique de confidentialité</a>.</p>
 
-  <h2>Télécharger</h2>
-  <!-- TODO : remplacer par les liens réels une fois les fiches publiées. -->
-  <p>Sourire sera bientôt disponible sur l'App Store et sur Google Play.</p>
+  <h2>Questions fréquentes</h2>
+  <div class="faq">
+    <details>
+      <summary>Où sont stockés mes souvenirs ?</summary>
+      <p>Ils restent localement dans le dossier sécurisé de ton téléphone,
+      personne d'autre n'y a accès.</p>
+    </details>
 
-  <h2>Besoin d'aide ?</h2>
-  <p>La <a href="/sourire/support/">page d'assistance</a> répond aux questions
-  les plus fréquentes, et l'adresse
-  <a href="mailto:support@mxsstudio.com">support@mxsstudio.com</a> est relevée
-  tous les jours.</p>
+    <details>
+      <summary>Comment fonctionne le tirage au sort ?</summary>
+      <p>Clique sur le bocal pour faire remonter un souvenir au hasard.</p>
+    </details>
+
+    <details>
+      <summary>Comment catégoriser des souvenirs ?</summary>
+      <p>Va dans l'historique et appuie longuement sur un souvenir. Tu pourras
+      alors en sélectionner plusieurs et choisir « Catégoriser ».</p>
+    </details>
+
+    <details>
+      <summary>Comment catégoriser mes souvenirs un par un ?</summary>
+      <p>Tu as deux options : importer tes souvenirs un par un, ou bien, depuis
+      l'écran de catégorisation du lot sélectionné, cliquer sur la photo qui
+      porte la pastille. Un carrousel de tes souvenirs apparaît, avec l'option
+      « Catégoriser 1 par 1 ».</p>
+    </details>
+
+    <details>
+      <summary>Comment supprimer des souvenirs ?</summary>
+      <p>Va dans l'historique, fais un appui long sur le souvenir,
+      sélectionne-le et appuie sur le bouton « Supprimer ».</p>
+    </details>
+
+    <details>
+      <summary>Comment supprimer des catégories de souvenirs ?</summary>
+      <p>Dans l'écran de sélection des catégories, fais glisser vers la gauche
+      la catégorie que tu veux supprimer.</p>
+    </details>
+
+    <details>
+      <summary>Que se passe-t-il si je change de téléphone ?</summary>
+      <p>Tes souvenirs vivent sur l'appareil, pas sur un serveur. Ils suivent
+      donc la sauvegarde de ton téléphone : restaure ta sauvegarde habituelle sur
+      le nouvel appareil et l'application repart avec son contenu. Sans
+      sauvegarde, les souvenirs restent sur l'ancien téléphone.</p>
+    </details>
+
+    <details>
+      <summary>Qu'apporte la version Premium ?</summary>
+      <p>Elle débloque l'ensemble des décors de notes. Le reste de
+      l'application, lui, ne change pas : la version gratuite n'est pas une
+      démonstration.</p>
+    </details>
+  </div>
+
+  <h2>Une question, un bug ?</h2>
+  <p>Écris-moi depuis la <a href="/contact/">page de contact</a> en choisissant
+  Sourire dans la liste. Je réponds moi-même, sous deux jours ouvrés.</p>
 </main>
 
 <footer>

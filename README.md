@@ -13,12 +13,14 @@ GitHub Pages publie la branche `main` en une minute environ.
 
 ## Structure
 
-    index.html                        accueil du studio (FR)
+    index.html                        accueil du studio : offre, étapes, profil
+    contact/                          devis et assistance, un formulaire chacun
+    contact/merci/                    page d'arrivée après envoi d'un formulaire
     sourire/                          page produit
-    sourire/support/                  URL d'assistance déclarée aux stores
     sourire/confidentialite/          politique de confidentialité
-    en/, es/                          mêmes pages en anglais et en espagnol
-    exercise-kitchen/                 squelette à compléter
+    sourire/support/                  redirection vers /contact/ (ancienne URL)
+    exercise-kitchen/                 page produit
+    en/, es/                          versions anglaise et espagnole
     mentions-legales/                 obligation légale, en français uniquement
     style.css                         feuille unique, variables de couleur en haut
     assets/fonts/                     Space Grotesk, servie depuis le site
@@ -27,8 +29,14 @@ GitHub Pages publie la branche `main` en une minute environ.
 
 ## Règles à tenir
 
-- Aucune ressource externe : ni Google Fonts, ni analytics, ni script tiers.
-  C'est ce qui permet de n'afficher aucune bannière cookies.
+- Aucune ressource externe : ni Google Fonts, ni analytics, ni script tiers, et
+  pas une ligne de JavaScript. C'est ce qui permet de n'afficher aucune bannière
+  cookies. Le menu Produits et les carrousels reposent sur `details` et sur le
+  défilement natif avec accroche.
+- Les deux formulaires de contact partent chez FormSubmit, qui relaie le message
+  par e-mail. C'est la seule dépendance externe du site, et elle est mentionnée
+  dans les mentions légales. À la première soumission, FormSubmit envoie un mail
+  d'activation à l'adresse destinataire : sans ce clic, rien n'arrive.
 - Les couleurs viennent des variables CSS en haut de `style.css`, elles
   correspondent à la charte d'identité du studio.
 - Chercher `TODO` avant chaque mise en ligne : les points restant à compléter
@@ -37,6 +45,13 @@ GitHub Pages publie la branche `main` en une minute environ.
   versions sont écrits en dur dans le bandeau et dans les balises `hreflang` :
   changer une URL oblige à mettre à jour les deux autres pages du groupe et le
   `sitemap.xml`.
+
+## Images
+
+Les visuels des pages produit sont les mockups et les bannières des fiches de
+store, recomposés et convertis en WebP. Les scènes de Sourire forment un ruban
+continu : un visuel isolé montre un téléphone coupé, d'où le regroupement par
+deux ou trois dans `sourire-1` à `sourire-3`.
 
 ## Réglages GitHub Pages
 

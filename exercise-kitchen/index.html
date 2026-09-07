@@ -3,19 +3,24 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Exercise Kitchen — MxS Studio</title>
-<meta name="description" content="Exercise Kitchen, application d'entraînement éditée par MxS Studio.">
+<title>Exercise Kitchen — l'application des adhérents</title>
+<meta name="description" content="Exercise Kitchen : inscriptions aux cours, liste d'attente, notifications en temps réel et photos de progression. L'application sur mesure d'une salle de sport.">
 <link rel="stylesheet" href="/style.css">
 <link rel="icon" href="/assets/img/favicon.ico" sizes="any">
 <link rel="icon" href="/assets/img/favicon-32.png" type="image/png">
 <link rel="apple-touch-icon" href="/assets/img/apple-touch-icon-180.png">
+<meta property="og:title" content="Exercise Kitchen">
+<meta property="og:description" content="L'application conçue sur mesure pour les adhérents.">
+<meta property="og:url" content="https://mxsstudio.com/exercise-kitchen/">
+<meta property="og:image" content="https://mxsstudio.com/assets/img/banniere-ek.webp">
+<meta property="og:type" content="website">
 </head>
 <body>
 <div class="page">
 
-<!-- TODO Margaux : cette page est un squelette. À compléter avec la vraie
-     description, le lien Play Store et la politique de confidentialité de
-     l'application (aujourd'hui hébergée sur GitHub). -->
+<!-- TODO Margaux : remplacer les liens de store par les vraies URL, et ajouter
+     la politique de confidentialité de l'application sur ce site plutôt que sur
+     GitHub, pour n'avoir qu'une seule source de vérité. -->
 
 <header class="bandeau">
   <a class="logo" href="/" aria-label="MxS Studio, accueil">
@@ -23,22 +28,84 @@
     <img class="sombre" src="/assets/img/mxs-bloc-sombre.svg" alt="MxS Studio" width="63" height="34">
   </a>
   <nav>
-    <a href="/">Accueil</a>
-    <a href="/sourire/">Sourire</a>
-    <a href="mailto:support@mxsstudio.com">Assistance</a>
+    <details class="menu">
+      <summary>Produits</summary>
+      <ul>
+        <li><a href="/sourire/">
+          <img src="/assets/img/icone-sourire.png" alt="" width="30" height="30">
+          <span class="nom">Sourire<span>Souvenirs heureux</span></span>
+        </a></li>
+        <li><a href="/exercise-kitchen/">
+          <img src="/assets/img/icone-ek.png" alt="" width="30" height="30">
+          <span class="nom">Exercise Kitchen<span>Salle de sport</span></span>
+        </a></li>
+      </ul>
+    </details>
+    <a href="/contact/">Contact</a>
   </nav>
 </header>
 
 <main>
-  <h1>Exercise Kitchen</h1>
-  <p class="chapeau">Une application d'entraînement conçue pour une salle de
-  sport, pensée pour être consultée entre deux séries.</p>
+  <h1 class="titre-app">
+    <img src="/assets/img/icone-ek.png" alt="" width="58" height="58">
+    Exercise Kitchen
+  </h1>
+  <p class="chapeau">L'application conçue sur mesure pour les adhérents. Les
+  pouces levés dans le groupe de discussion ne sont plus qu'un lointain
+  souvenir.</p>
 
-  <p>Cette page sera complétée prochainement.</p>
+  <img class="banniere" src="/assets/img/banniere-ek.webp"
+    alt="Exercise Kitchen" width="1400" height="684">
 
-  <h2>Assistance</h2>
-  <p>Pour toute question sur l'application :
-  <a href="mailto:support@mxsstudio.com">support@mxsstudio.com</a>.</p>
+  <p>Une salle de sport gérait ses inscriptions aux cours dans une conversation
+  de groupe. Exercise Kitchen a remplacé ça : chacun voit sa semaine, s'inscrit,
+  rejoint une liste d'attente et reçoit une notification quand une place se
+  libère.</p>
+
+  <div class="stores">
+    <a class="store bientot" href="/contact/">Sur l'App Store</a>
+    <a class="store bientot" href="/contact/">Sur Google Play</a>
+  </div>
+  <p class="dispo">iPhone et Android, sur téléphone uniquement. L'accès est
+  réservé aux adhérents : ce sont les coachs qui créent les comptes et
+  choisissent les formules.</p>
+
+  <h2>En images</h2>
+  <div class="carrousel">
+    <img src="/assets/img/ek-1.webp" alt="Galerie des photos de progression" width="900" height="1947" loading="lazy">
+    <img src="/assets/img/ek-2.webp" alt="Planning de la semaine et inscription aux cours" width="900" height="1947" loading="lazy">
+    <img src="/assets/img/ek-3.webp" alt="Réservation de l'espace Rekovery" width="900" height="1947" loading="lazy">
+  </div>
+  <p class="legende">Faites glisser pour voir les écrans suivants.</p>
+
+  <h2>Ce que fait l'application</h2>
+  <ul>
+    <li><strong>Un compte créé par les coachs</strong> : ce sont eux qui
+    inscrivent l'adhérent et choisissent ses formules.</li>
+    <li><strong>Des inscriptions ouvertes dès le vendredi</strong> pour la
+    semaine suivante.</li>
+    <li><strong>Une place ou une liste d'attente</strong> : on s'inscrit à un
+    cours directement, ou on se met en attente si le créneau est complet.</li>
+    <li><strong>Des notifications en temps réel</strong> : statut des
+    inscriptions et messages d'alerte de la salle.</li>
+    <li><strong>La semaine en un coup d'œil</strong>, cours réservés et créneaux
+    disponibles compris.</li>
+    <li><strong>Les photos de progression</strong>, pour constater les résultats
+    plutôt que de les deviner.</li>
+    <li><strong>L'espace Rekovery</strong> : demande d'accès et réservation d'un
+    créneau de récupération.</li>
+  </ul>
+
+  <h2>Une application avec un serveur, et c'est voulu</h2>
+  <p>Contrairement à Sourire, Exercise Kitchen repose sur des comptes et sur un
+  serveur partagé. C'est la condition pour qu'un coach ouvre un créneau et que
+  tous les adhérents le voient dans la seconde. Le besoin commande la technique,
+  pas l'inverse.</p>
+
+  <h2>Une question, un bug ?</h2>
+  <p>Écris-nous depuis la <a href="/contact/">page de contact</a> en choisissant
+  Exercise Kitchen dans la liste. Pour tout ce qui touche à ton compte ou à tes
+  formules, passe d'abord par tes coachs, ce sera plus rapide.</p>
 </main>
 
 <footer>
