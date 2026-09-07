@@ -9,9 +9,10 @@
 <link rel="icon" href="/assets/img/favicon.ico" sizes="any">
 <link rel="icon" href="/assets/img/favicon-32.png" type="image/png">
 <link rel="apple-touch-icon" href="/assets/img/apple-touch-icon-180.png">
+<script src="/script.js" defer></script>
 </head>
 <body>
-<div class="page">
+<div class="page" id="haut">
 
 <!-- TODO Margaux : les deux formulaires passent par FormSubmit, qui relaie le
      message vers ta boîte. À la toute première soumission, FormSubmit t'envoie
@@ -37,8 +38,11 @@
         </a></li>
       </ul>
     </details>
+    <a href="/methode/">Méthode</a>
+    <a href="/a-propos/">À propos</a>
     <a href="/contact/" aria-current="page">Contact</a>
   </nav>
+  <span class="langues"><a href="/contact/" hreflang="fr" aria-current="true">FR</a><a href="/en/" hreflang="en">EN</a><a href="/es/" hreflang="es">ES</a></span>
 </header>
 
 <main>
@@ -56,11 +60,6 @@
     <input type="hidden" name="_next" value="https://mxsstudio.com/contact/merci/">
     <input type="hidden" name="_template" value="table">
     <input type="hidden" name="_captcha" value="false">
-    <div class="pot-de-miel" aria-hidden="true">
-      <label for="devis-piege">Ne rien écrire ici</label>
-      <input type="text" id="devis-piege" name="_honey" tabindex="-1" autocomplete="off">
-    </div>
-
     <label for="devis-nom">Votre nom</label>
     <input type="text" id="devis-nom" name="nom" required autocomplete="name">
 
@@ -84,11 +83,6 @@
     <input type="hidden" name="_next" value="https://mxsstudio.com/contact/merci/">
     <input type="hidden" name="_template" value="table">
     <input type="hidden" name="_captcha" value="false">
-    <div class="pot-de-miel" aria-hidden="true">
-      <label for="aide-piege">Ne rien écrire ici</label>
-      <input type="text" id="aide-piege" name="_honey" tabindex="-1" autocomplete="off">
-    </div>
-
     <label for="aide-produit">Application concernée</label>
     <select id="aide-produit" name="application" required>
       <option value="">Choisissez une application</option>
@@ -124,5 +118,6 @@
 </footer>
 
 </div>
+<a class="haut" href="#haut" aria-label="Revenir en haut de la page">&uarr;</a>
 </body>
 </html>

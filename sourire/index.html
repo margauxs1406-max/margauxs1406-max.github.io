@@ -18,9 +18,10 @@
 <link rel="alternate" hreflang="en" href="https://mxsstudio.com/en/sourire/">
 <link rel="alternate" hreflang="es" href="https://mxsstudio.com/es/sourire/">
 <link rel="alternate" hreflang="x-default" href="https://mxsstudio.com/sourire/">
+<script src="/script.js" defer></script>
 </head>
 <body>
-<div class="page">
+<div class="page" id="haut">
 
 <!-- TODO Margaux : remplacer les deux liens de store par les vraies URL dès que
      les fiches sont publiées, et retirer la classe « bientot ». -->
@@ -44,6 +45,8 @@
         </a></li>
       </ul>
     </details>
+    <a href="/methode/">Méthode</a>
+    <a href="/a-propos/">À propos</a>
     <a href="/contact/">Contact</a>
   </nav>
   <span class="langues"><a href="/sourire/" hreflang="fr" aria-current="true">FR</a><a href="/en/sourire/" hreflang="en">EN</a><a href="/es/sourire/" hreflang="es">ES</a></span>
@@ -65,19 +68,27 @@
   il t'en ressort un au hasard.</p>
 
   <div class="stores">
-    <a class="store bientot" href="/contact/">Bientôt sur l'App Store</a>
-    <a class="store bientot" href="/contact/">Bientôt sur Google Play</a>
+    <a class="store secondaire" href="/contact/">Bientôt sur l'App Store</a>
+    <a class="store secondaire" href="/contact/">Bientôt sur Google Play</a>
   </div>
   <p class="dispo">iPhone, iPad et Android. Application gratuite, version
   Premium facultative pour débloquer tous les décors de notes.</p>
 
   <h2>En images</h2>
-  <div class="carrousel">
-    <img src="/assets/img/sourire-1.webp" alt="Écran d'accueil de Sourire, avec le bocal à souvenirs" width="1600" height="1731" loading="lazy">
-    <img src="/assets/img/sourire-2.webp" alt="Collecte des souvenirs et choix du décor d'une note" width="1600" height="1731" loading="lazy">
-    <img src="/assets/img/sourire-3.webp" alt="Badges débloqués et partage d'un souvenir" width="1600" height="1154" loading="lazy">
+  <div class="zone-carrousel">
+    <button class="fleche gauche" type="button" aria-label="Écrans précédents" hidden>&lsaquo;</button>
+    <div class="carrousel">
+      <img src="/assets/img/sourire-1.webp" alt="Le bonheur dans un bocal : écran d'accueil de Sourire" width="440" height="952" loading="lazy">
+      <img src="/assets/img/sourire-2.webp" alt="Le bocal à souvenirs sur l'écran d'accueil" width="440" height="952" loading="lazy">
+      <img src="/assets/img/sourire-3.webp" alt="Collecte des souvenirs et tirage au hasard" width="440" height="952" loading="lazy">
+      <img src="/assets/img/sourire-4.webp" alt="Choix du décor d'une note" width="440" height="952" loading="lazy">
+      <img src="/assets/img/sourire-5.webp" alt="Badges débloqués au fil de la collection" width="440" height="952" loading="lazy">
+      <img src="/assets/img/sourire-6.webp" alt="Partage d'un souvenir avec un proche" width="440" height="952" loading="lazy">
+      <img src="/assets/img/sourire-7.webp" alt="Un souvenir partagé depuis l'application" width="440" height="952" loading="lazy">
+    </div>
+    <button class="fleche droite" type="button" aria-label="Écrans suivants" hidden>&rsaquo;</button>
   </div>
-  <p class="legende">Faites glisser pour voir les écrans suivants.</p>
+  <p class="legende">Faites glisser, ou utilisez les flèches.</p>
 
   <h2>Ce que fait l'application</h2>
   <ul>
@@ -169,5 +180,7 @@
 </footer>
 
 </div>
+
+<a class="haut" href="#haut" aria-label="Revenir en haut de la page">&uarr;</a>
 </body>
 </html>

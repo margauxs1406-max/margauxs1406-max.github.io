@@ -17,9 +17,10 @@
 <link rel="alternate" hreflang="en" href="https://mxsstudio.com/en/">
 <link rel="alternate" hreflang="es" href="https://mxsstudio.com/es/">
 <link rel="alternate" hreflang="x-default" href="https://mxsstudio.com/">
+<script src="/script.js" defer></script>
 </head>
 <body>
-<div class="page">
+<div class="page" id="haut">
 
 <header class="bandeau">
   <a class="logo" href="/" aria-label="MxS Studio, accueil">
@@ -40,6 +41,8 @@
         </a></li>
       </ul>
     </details>
+    <a href="/methode/">Méthode</a>
+    <a href="/a-propos/">À propos</a>
     <a href="/contact/">Contact</a>
   </nav>
   <span class="langues"><a href="/" hreflang="fr" aria-current="true">FR</a><a href="/en/" hreflang="en">EN</a><a href="/es/" hreflang="es">ES</a></span>
@@ -57,82 +60,20 @@
   la personne qui dessine et qui code. Comptez moins de dix jours de travail
   entre le premier échange et la mise en ligne, selon l'ampleur du projet.</p>
 
-  <p><a href="/contact/">Demander un devis</a></p>
+  <p class="cta-centre"><a class="cta" href="/contact/">Demander un devis</a></p>
 
   <h2>Ce que comprend une réalisation</h2>
   <p>Une application ne se résume pas à son code. Publier, c'est aussi des
   visuels aux bons formats, des textes, des documents juridiques et une phase de
-  test. Tout est inclus.</p>
-
-  <ol class="etapes">
-    <li><b>Idéation</b>
-      <span>On cadre le besoin et on écrit noir sur blanc ce que le produit fera,
-      et ce qu'il ne fera pas. C'est l'étape qui évite les mauvaises surprises
-      budgétaires.</span></li>
-    <li><b>Recherche utilisateur</b>
-      <span>On regarde à qui l'on s'adresse et comment ces personnes travaillent
-      aujourd'hui, avant d'écrire la moindre ligne de code.</span></li>
-    <li><b>Design et prototype</b>
-      <span>Maquettes, parcours, prototype cliquable. Vous validez le produit en
-      le manipulant, pas en lisant un cahier des charges.</span></li>
-    <li><b>Développement</b>
-      <span>L'application est développée en Flutter : une seule base de code
-      pour Android et iOS, donc un seul budget.</span></li>
-    <li><b>Supports visuels</b>
-      <span>Icône, bannières, mockups et captures d'écran, produits aux formats
-      exigés par chaque store, téléphone et tablette compris.</span></li>
-    <li><b>Textes publicitaires</b>
-      <span>Fiches produit rédigées pour convaincre, et traduites si vous visez
-      plusieurs pays.</span></li>
-    <li><b>Documents juridiques</b>
-      <span>Politique de confidentialité, mentions légales et déclarations de
-      collecte de données, exigées par Apple comme par Google.</span></li>
-    <li><b>Phase de test</b>
-      <span>Recrutement des testeurs et corrections au fil de leurs retours.
-      Google impose à tout nouveau compte de développeur personnel au moins
-      douze testeurs inscrits pendant quatorze jours consécutifs avant la mise
-      en production.</span></li>
-    <li><b>Publication</b>
-      <span>Dépôt sur l'App Store, sur Google Play ou les deux, et suivi jusqu'à
-      la validation par les équipes de revue.</span></li>
-    <li><b>Suivi annuel, en option</b>
-      <span>Une journée de travail par an pour accompagner les montées de
-      version des systèmes et garder l'application conforme aux règles des
-      stores, qui changent chaque année.</span></li>
-  </ol>
+  test. Tout est inclus, et le détail des dix étapes est sur la page
+  <a href="/methode/">Méthode</a>.</p>
 
   <h2>Qui vous répondra</h2>
   <p>Je m'appelle Margaux Silva. Je conçois et je développe des produits
-  numériques, et j'ai choisi de faire les deux plutôt que l'un ou l'autre. Cette
-  double casquette évite le travers habituel des petits projets : une idée
-  développée sans jamais avoir été confrontée à ses utilisateurs, ou une maquette
-  superbe que personne ne sait construire dans le budget.</p>
-
-  <p>Je conduis chaque projet comme un projet d'ingénierie, avec un périmètre
-  écrit, des jalons et une date. Et je le fais avec attention : mes deux
-  premières applications sont nées d'un besoin réel, celui d'une salle de sport
-  pour l'une, le mien pour l'autre.</p>
-
-  <div class="reperes">
-    <div class="repere">
-      <b>CAPM®</b>
-      <span>Certification en gestion de projet du Project Management Institute,
-      obtenue en 2023.</span>
-    </div>
-    <div class="repere">
-      <b>Product Design</b>
-      <span>Bootcamp The Design Crew, promotion 9, 2023.</span>
-    </div>
-    <div class="repere">
-      <b>Deux applications publiées</b>
-      <span>Une application métier sur mesure, une application grand public
-      internationale.</span>
-    </div>
-    <div class="repere">
-      <b>MxS Studio</b>
-      <span>Entreprise individuelle immatriculée en France.</span>
-    </div>
-  </div>
+  numériques, et j'ai choisi de faire les deux plutôt que l'un ou l'autre : un
+  regard de Product Designer, une méthode d'ingénieure, l'énergie d'une
+  indépendante.</p>
+  <p><a href="/a-propos/">En savoir plus sur mon parcours</a></p>
 
   <h2>Les produits</h2>
   <p>Deux applications, deux mondes opposés : l'une garde tout sur le téléphone
@@ -141,14 +82,14 @@
 
   <div class="apps">
     <a class="app" href="/sourire/">
-      <h2>Sourire</h2>
+      <h2><img src="/assets/img/icone-sourire.png" alt="" width="34" height="34">Sourire</h2>
       <p>Un bocal à souvenirs heureux, sans compte, sans cloud et sans
       publicité. Application grand public, publiée en trois langues.</p>
       <span class="etat">iOS et Android · téléphone et tablette</span>
     </a>
 
     <a class="app" href="/exercise-kitchen/">
-      <h2>Exercise Kitchen</h2>
+      <h2><img src="/assets/img/icone-ek.png" alt="" width="34" height="34">Exercise Kitchen</h2>
       <p>L'application sur mesure d'une salle de sport : inscriptions aux cours,
       liste d'attente, notifications et suivi de progression.</p>
       <span class="etat">iOS et Android · téléphone</span>
@@ -158,7 +99,7 @@
   <h2>Parlons de votre projet</h2>
   <p>Décrivez votre besoin en quelques lignes, même flou, même à l'état d'idée.
   Je vous réponds avec un périmètre, un délai et un prix.</p>
-  <p><a href="/contact/">Demander un devis</a></p>
+  <p class="cta-centre"><a class="cta" href="/contact/">Demander un devis</a></p>
 </main>
 
 <footer>
@@ -167,5 +108,6 @@
 </footer>
 
 </div>
+<a class="haut" href="#haut" aria-label="Revenir en haut de la page">&uarr;</a>
 </body>
 </html>

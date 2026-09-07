@@ -14,6 +14,8 @@ GitHub Pages publie la branche `main` en une minute environ.
 ## Structure
 
     index.html                        accueil du studio : offre, étapes, profil
+    methode/                          les dix étapes d'une réalisation
+    a-propos/                         parcours et positionnement
     contact/                          devis et assistance, un formulaire chacun
     contact/merci/                    page d'arrivée après envoi d'un formulaire
     sourire/                          page produit
@@ -23,16 +25,20 @@ GitHub Pages publie la branche `main` en une minute environ.
     en/, es/                          versions anglaise et espagnole
     mentions-legales/                 obligation légale, en français uniquement
     style.css                         feuille unique, variables de couleur en haut
+    script.js                         menu et carrousels, une trentaine de lignes
     assets/fonts/                     Space Grotesk, servie depuis le site
     assets/img/                       logotypes et favicons
     CNAME                             domaine personnalisé
 
 ## Règles à tenir
 
-- Aucune ressource externe : ni Google Fonts, ni analytics, ni script tiers, et
-  pas une ligne de JavaScript. C'est ce qui permet de n'afficher aucune bannière
-  cookies. Le menu Produits et les carrousels reposent sur `details` et sur le
-  défilement natif avec accroche.
+- Aucune ressource externe : ni Google Fonts, ni analytics, ni script tiers,
+  donc aucune bannière cookies à afficher. Le menu Produits repose sur
+  `details`, sans script.
+- Seule exception, `script.js` : la fermeture du menu Produits au clic
+  extérieur et les flèches des carrousels. Aucun appel réseau, aucun stockage.
+  Sans lui, le menu se referme en recliquant sur « Produits » et les carrousels
+  défilent au doigt et au trackpad, donc rien n'est cassé.
 - Les deux formulaires de contact partent chez FormSubmit, qui relaie le message
   par e-mail. C'est la seule dépendance externe du site, et elle est mentionnée
   dans les mentions légales. À la première soumission, FormSubmit envoie un mail

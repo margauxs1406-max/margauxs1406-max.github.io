@@ -14,9 +14,10 @@
 <meta property="og:url" content="https://mxsstudio.com/exercise-kitchen/">
 <meta property="og:image" content="https://mxsstudio.com/assets/img/banniere-ek.webp">
 <meta property="og:type" content="website">
+<script src="/script.js" defer></script>
 </head>
 <body>
-<div class="page">
+<div class="page" id="haut">
 
 <!-- TODO Margaux : remplacer les liens de store par les vraies URL, et ajouter
      la politique de confidentialité de l'application sur ce site plutôt que sur
@@ -41,8 +42,11 @@
         </a></li>
       </ul>
     </details>
+    <a href="/methode/">Méthode</a>
+    <a href="/a-propos/">À propos</a>
     <a href="/contact/">Contact</a>
   </nav>
+  <span class="langues"><a href="/exercise-kitchen/" hreflang="fr" aria-current="true">FR</a><a href="/en/" hreflang="en">EN</a><a href="/es/" hreflang="es">ES</a></span>
 </header>
 
 <main>
@@ -63,20 +67,25 @@
   libère.</p>
 
   <div class="stores">
-    <a class="store bientot" href="/contact/">Sur l'App Store</a>
-    <a class="store bientot" href="/contact/">Sur Google Play</a>
+    <a class="store secondaire" href="/contact/">Sur l'App Store</a>
+    <a class="store secondaire" href="/contact/">Sur Google Play</a>
   </div>
   <p class="dispo">iPhone et Android, sur téléphone uniquement. L'accès est
   réservé aux adhérents : ce sont les coachs qui créent les comptes et
   choisissent les formules.</p>
 
   <h2>En images</h2>
-  <div class="carrousel">
-    <img src="/assets/img/ek-1.webp" alt="Galerie des photos de progression" width="900" height="1947" loading="lazy">
-    <img src="/assets/img/ek-2.webp" alt="Planning de la semaine et inscription aux cours" width="900" height="1947" loading="lazy">
-    <img src="/assets/img/ek-3.webp" alt="Réservation de l'espace Rekovery" width="900" height="1947" loading="lazy">
+  <div class="zone-carrousel">
+    <button class="fleche gauche" type="button" aria-label="Écrans précédents" hidden>&lsaquo;</button>
+    <div class="carrousel">
+      <img src="/assets/img/ek-1.webp" alt="S'entrainer intentionnellement, pas habituellement" width="440" height="952" loading="lazy">
+      <img src="/assets/img/ek-2.webp" alt="Inscription à un cours ou liste d'attente" width="440" height="952" loading="lazy">
+      <img src="/assets/img/ek-3.webp" alt="Demande d'accès à l'espace Rekovery" width="440" height="952" loading="lazy">
+      <img src="/assets/img/ek-4.webp" alt="Galerie des photos de progression" width="440" height="952" loading="lazy">
+    </div>
+    <button class="fleche droite" type="button" aria-label="Écrans suivants" hidden>&rsaquo;</button>
   </div>
-  <p class="legende">Faites glisser pour voir les écrans suivants.</p>
+  <p class="legende">Faites glisser, ou utilisez les flèches.</p>
 
   <h2>Ce que fait l'application</h2>
   <ul>
@@ -114,5 +123,7 @@
 </footer>
 
 </div>
+
+<a class="haut" href="#haut" aria-label="Revenir en haut de la page">&uarr;</a>
 </body>
 </html>

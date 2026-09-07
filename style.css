@@ -58,8 +58,16 @@ body {
   align-items: center;
   justify-content: space-between;
   gap: 24px;
-  padding: 28px 0 22px;
+  padding: 20px 0 16px;
   border-bottom: 1px solid var(--filet);
+  /* Collant plutôt que fixe : le bandeau reste dans le flux, donc la première
+     ligne de la page n'a pas besoin d'une marge compensatoire, et il se colle
+     en haut dès qu'on défile. Le fond opaque est indispensable, sinon le texte
+     défile en transparence derrière lui. */
+  position: sticky;
+  top: 0;
+  z-index: 60;
+  background: var(--fond);
 }
 
 .bandeau .logo { display: block; }
@@ -132,7 +140,14 @@ hr { border: 0; border-top: 1px solid var(--filet); margin: 48px 0; }
   color: inherit;
 }
 .app:hover, .app:focus { border-color: var(--accent); }
-.app h2 { margin: 0 0 4px; font-size: 19px; }
+.app h2 {
+  margin: 0 0 4px;
+  font-size: 19px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.app h2 img { width: 34px; height: 34px; border-radius: 9px; flex: none; }
 .app p { margin: 0; color: var(--texte-doux); font-size: 15px; }
 .app .etat {
   display: inline-block;
@@ -201,43 +216,49 @@ footer a { color: var(--texte-doux); }
    ========================================================================= */
 
 /* ------------------------------------------------- menu déroulant Produits */
-/* `details` plutôt qu'un script : le menu s'ouvre et se ferme sans une ligne
-   de JavaScript, et reste utilisable au clavier. Seule concession : il ne se
-   referme pas en cliquant ailleurs dans la page. */
+/* `details` plutôt qu'un script : le menu s'ouvre et se ferme sans JavaScript
+   et reste utilisable au clavier. Les trois règles de marqueur sont là parce
+   qu'aucune ne suffit seule : Chrome lit `list-style`, Safari le pseudo-élément
+   WebKit, Firefox `::marker`. Sans les trois, un triangle noir apparaît à
+   gauche du mot et ressemble à une puce de liste. */
 .menu { position: relative; }
 .menu > summary {
   cursor: pointer;
   list-style: none;
   color: var(--texte-doux);
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
 }
 .menu > summary::-webkit-details-marker { display: none; }
+.menu > summary::marker { content: ""; }
 .menu > summary::after {
   content: "";
-  display: inline-block;
   width: 6px; height: 6px;
-  margin-left: 7px;
-  vertical-align: 2px;
   border-right: 1.5px solid currentColor;
   border-bottom: 1.5px solid currentColor;
-  transform: rotate(45deg);
+  transform: translateY(-2px) rotate(45deg);
 }
+.menu > summary:hover { color: var(--accent); }
 .menu[open] > summary { color: var(--accent); }
-.menu[open] > summary::after { transform: rotate(-135deg); vertical-align: -1px; }
+.menu[open] > summary::after { transform: translateY(1px) rotate(-135deg); }
+
 .menu ul {
   position: absolute;
-  top: calc(100% + 12px);
+  top: calc(100% + 14px);
   left: -12px;
-  z-index: 20;
-  min-width: 230px;
+  z-index: 100;
+  min-width: 250px;
   margin: 0;
   padding: 6px;
   list-style: none;
   background: var(--carte);
   border: 1px solid var(--filet);
   border-radius: 12px;
-  box-shadow: 0 12px 28px rgba(0,0,0,.10);
+  box-shadow: 0 14px 34px rgba(0,0,0,.14);
 }
-.menu li { margin: 0; }
+.menu ul li { margin: 0; list-style: none; }
+.menu ul li::marker { content: ""; }
 .menu li a {
   display: flex;
   align-items: center;
@@ -248,68 +269,135 @@ footer a { color: var(--texte-doux); }
   text-decoration: none;
   font-size: 15px;
 }
-.menu li a:hover, .menu li a:focus { background: var(--fond); }
-.menu li img { width: 30px; height: 30px; border-radius: 8px; }
+.menu li a:hover, .menu li a:focus { background: var(--fond); text-decoration: none; }
+.menu li img { width: 30px; height: 30px; border-radius: 8px; flex: none; }
 .menu li .nom span { display: block; font-size: 12px; color: var(--texte-doux); }
+
+/* Le bandeau passe au-dessus du contenu : sans cela, le panneau ouvert glissait
+   derrière la bannière et derrière les images du carrousel. */
+.bandeau { position: relative; z-index: 60; }
 
 /* ------------------------------------------------------- titres d'app */
 .titre-app { display: flex; align-items: center; gap: 16px; }
 .titre-app img { width: 58px; height: 58px; border-radius: 14px; flex: none; }
 
 /* --------------------------------------------------- bannière et carrousel */
+/* La bannière occupe exactement la colonne de texte : `width:100%` seul ne
+   suffit pas si le navigateur lit l'attribut `width` du HTML avant la CSS. */
 .banniere {
   display: block;
   width: 100%;
+  max-width: 100%;
   height: auto;
   border-radius: 14px;
   margin: 26px 0 8px;
 }
 
-/* Défilement natif avec accroche : pas de bibliothèque, pas de boutons à
-   maintenir, et le geste est celui que tout le monde connaît déjà. */
+.zone-carrousel { position: relative; margin: 24px 0 8px; }
+
 .carrousel {
   display: flex;
-  gap: 14px;
+  gap: 12px;
   overflow-x: auto;
-  scroll-snap-type: x mandatory;
-  padding: 4px 0 14px;
-  margin: 0 -24px;
-  padding-left: 24px;
-  padding-right: 24px;
+  scroll-snap-type: x proximity;
+  scroll-behavior: smooth;
+  padding-bottom: 12px;
   scrollbar-width: thin;
 }
 .carrousel img {
-  scroll-snap-align: center;
-  height: 400px;
-  width: auto;
-  border-radius: 12px;
+  flex: 0 0 auto;
+  width: 200px;              /* moins d'un tiers de la colonne */
+  height: auto;
+  scroll-snap-align: start;
+  border-radius: 10px;
   border: 1px solid var(--filet);
-  flex: none;
 }
+
+/* Les deux flèches sont masquées par défaut et révélées par le script : sans
+   JavaScript, le défilement au doigt ou au trackpad fonctionne toujours, et on
+   n'affiche pas des boutons morts. */
+.fleche {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 5;
+  width: 40px; height: 40px;
+  border: 1px solid var(--filet);
+  border-radius: 50%;
+  background: var(--carte);
+  color: var(--texte);
+  font-size: 17px;
+  line-height: 1;
+  cursor: pointer;
+  box-shadow: 0 4px 14px rgba(0,0,0,.12);
+}
+.fleche:hover { color: var(--accent); border-color: var(--accent); }
+.fleche.gauche { left: -14px; }
+.fleche.droite { right: -14px; }
+.fleche[hidden] { display: none; }
+@media (max-width: 700px) { .fleche { display: none; } }
+
 .legende { font-size: 13px; color: var(--texte-doux); margin: 0 0 30px; }
 
-/* ------------------------------------------------------ boutons de store */
-.stores { display: flex; flex-wrap: wrap; gap: 14px; margin: 24px 0 8px; }
-.store {
+/* ------------------------------------------ appels à l'action et boutons */
+/* Une seule apparence pour tous les boutons du site : pilule ardoise pour
+   l'action principale, contour ardoise sur fond blanc pour la secondaire.
+   Le rayon est volontairement démesuré : au-delà de la moitié de la hauteur,
+   le navigateur arrondit complètement les côtés quelle que soit la taille du
+   texte, donc la forme reste juste sans avoir à la recalculer. */
+.cta, .formulaire button, .store {
   display: inline-flex;
   align-items: center;
+  justify-content: center;
   gap: 10px;
-  padding: 15px 26px;
-  border-radius: 12px;
-  background: var(--texte);
-  color: var(--fond);
-  text-decoration: none;
+  padding: 8px 20px;
+  border: 1.5px solid var(--ardoise);
+  border-radius: 999px;
+  background: var(--ardoise);
+  color: #fff;
+  font: inherit;
+  font-size: 15px;
   font-weight: 600;
-  font-size: 16px;
+  line-height: 1.6;
+  text-decoration: none;
+  cursor: pointer;
 }
-.store:hover, .store:focus { opacity: .88; }
-.store.bientot {
-  background: transparent;
-  color: var(--texte-doux);
-  border: 1.5px dashed var(--filet);
-  font-weight: 500;
+.cta:hover, .formulaire button:hover, .store:hover,
+.cta:focus, .store:focus { opacity: .9; text-decoration: none; }
+
+.cta.secondaire, .store.secondaire {
+  background: #fff;
+  color: var(--ardoise);
 }
+
+/* Un appel à l'action isolé se centre dans la colonne. */
+.cta-centre { text-align: center; margin: 30px 0; }
+
+.stores { display: flex; flex-wrap: wrap; gap: 14px; margin: 24px 0 8px; }
 .dispo { font-size: 14px; color: var(--texte-doux); }
+
+/* ---------------------------------------------- retour en haut de page */
+/* Une simple ancre : pas de script, et le défilement est déjà fluide grâce à
+   `scroll-behavior` déclaré sur `html`. */
+.haut {
+  position: fixed;
+  right: 20px;
+  bottom: 20px;
+  z-index: 80;
+  width: 46px; height: 46px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid var(--filet);
+  border-radius: 50%;
+  background: var(--carte);
+  color: var(--texte);
+  font-size: 19px;
+  line-height: 1;
+  text-decoration: none;
+  box-shadow: 0 6px 18px rgba(0,0,0,.14);
+}
+.haut:hover, .haut:focus { color: var(--ardoise); border-color: var(--ardoise); }
 
 /* --------------------------------------------------------- les étapes */
 .etapes { counter-reset: etape; list-style: none; padding: 0; margin: 26px 0 0; }
@@ -319,6 +407,7 @@ footer a { color: var(--texte-doux); }
   margin: 0 0 0 14px;
   padding: 0 0 26px 40px;
   border-left: 2px solid var(--filet);
+  list-style: none;
 }
 .etapes li::before {
   content: counter(etape);
@@ -340,39 +429,48 @@ footer a { color: var(--texte-doux); }
 .etapes span { color: var(--texte-doux); font-size: 15px; }
 
 /* ----------------------------------------------------------- repères */
-.reperes { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 14px; margin: 26px 0; }
+.reperes { display: grid; grid-template-columns: repeat(auto-fit, minmax(210px, 1fr)); gap: 14px; margin: 26px 0; }
 .repere { padding: 18px 20px; background: var(--carte); border: 1px solid var(--filet); border-radius: 12px; }
 .repere b { display: block; font-family: "Space Grotesk", system-ui, sans-serif; font-size: 16px; }
 .repere span { font-size: 14px; color: var(--texte-doux); }
 
 /* -------------------------------------------------------- formulaires */
-.formulaire {
-  background: var(--carte);
-  border: 1px solid var(--filet);
-  border-radius: 12px;
-  padding: 6px 24px 26px;
-  margin: 18px 0 40px;
-}
-.formulaire label { display: block; font-size: 13px; font-weight: 600; margin: 18px 0 6px; }
-.formulaire input, .formulaire select, .formulaire textarea {
+/* Pas d'encadré : les champs occupent toute la colonne, les uns sous les
+   autres. Un formulaire de contact n'a pas besoin d'être une carte, il a
+   besoin d'être évident. */
+.formulaire { margin: 18px 0 46px; }
+.formulaire p { margin: 0 0 4px; }
+.formulaire label {
+  display: block;
   width: 100%;
-  padding: 11px 13px;
+  font-size: 13px;
+  font-weight: 600;
+  margin: 22px 0 7px;
+}
+.formulaire input,
+.formulaire select,
+.formulaire textarea {
+  display: block;
+  width: 100%;
+  max-width: 100%;
+  padding: 12px 14px;
   border: 1px solid var(--filet);
   border-radius: 8px;
-  background: var(--fond);
+  background: var(--carte);
   color: var(--texte);
   font: inherit;
   font-size: 15px;
 }
-.formulaire textarea { min-height: 140px; resize: vertical; }
+.formulaire textarea { min-height: 150px; resize: vertical; }
 .formulaire input:focus, .formulaire select:focus, .formulaire textarea:focus {
   outline: 2px solid var(--accent);
   outline-offset: 1px;
   border-color: transparent;
 }
 .formulaire button {
-  margin-top: 22px;
-  padding: 13px 30px;
+  display: inline-block;
+  margin-top: 26px;
+  padding: 14px 32px;
   border: 0;
   border-radius: 30px;
   background: var(--accent);
@@ -383,10 +481,8 @@ footer a { color: var(--texte-doux); }
   cursor: pointer;
 }
 .formulaire button:hover { opacity: .9; }
-/* Piège à robots : invisible pour les humains, rempli par les automates. */
-.pot-de-miel { position: absolute; left: -9999px; width: 1px; height: 1px; overflow: hidden; }
 
 @media (max-width: 560px) {
-  .carrousel img { height: 300px; }
+  .carrousel img { width: 160px; }
   .titre-app img { width: 46px; height: 46px; }
 }
