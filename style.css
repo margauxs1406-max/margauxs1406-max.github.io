@@ -445,8 +445,8 @@ footer a { color: var(--texte-doux); }
   content: "";
   margin-left: auto;
   width: 7px; height: 7px;
-  border-right: 1.5px solid var(--texte-doux);
-  border-bottom: 1.5px solid var(--texte-doux);
+  border-right: 1.5px solid var(--ardoise);
+  border-bottom: 1.5px solid var(--ardoise);
   transform: translateY(-2px) rotate(45deg);
 }
 .etapes details[open] summary::after { transform: translateY(2px) rotate(-135deg); }
