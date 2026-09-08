@@ -22,7 +22,6 @@ GitHub Pages publie la branche `main` en une minute environ.
     sourire/confidentialite/          politique de confidentialité
     sourire/support/                  redirection vers /contact/ (ancienne URL)
     exercise-kitchen/                 page produit
-    en/, es/                          versions anglaise et espagnole
     mentions-legales/                 obligation légale, en français uniquement
     style.css                         feuille unique, variables de couleur en haut
     script.js                         menu et carrousels, une trentaine de lignes
@@ -47,10 +46,13 @@ GitHub Pages publie la branche `main` en une minute environ.
   correspondent à la charte d'identité du studio.
 - Chercher `TODO` avant chaque mise en ligne : les points restant à compléter
   y sont signalés.
-- Une page modifiée dans une langue doit l'être dans les trois. Les liens entre
-  versions sont écrits en dur dans le bandeau et dans les balises `hreflang` :
-  changer une URL oblige à mettre à jour les deux autres pages du groupe et le
-  `sitemap.xml`.
+- Le site est en français uniquement. Les versions anglaise et espagnole ont
+  été retirées : le navigateur traduit à la demande, et l'entreprise s'adresse
+  au marché français.
+- `style.css` et `script.js` sont appelés avec un numéro de version
+  (`?v=5`). À chaque modification de l'un des deux, incrémenter ce numéro dans
+  toutes les pages, sinon les navigateurs continuent de servir l'ancienne
+  version depuis leur cache.
 
 ## Images
 
