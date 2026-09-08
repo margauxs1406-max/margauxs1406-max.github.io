@@ -204,8 +204,7 @@ footer a { color: var(--texte-doux); }
 
 @media (max-width: 560px) {
   h1 { font-size: 28px; margin-top: 34px; }
-  .entete-interieur { flex-wrap: wrap; gap: 10px 16px; padding: 12px 20px; }
-  nav { gap: 16px; font-size: 14px; }
+  .entete-interieur { padding: 12px 20px; }
 }
 
 /* =========================================================================
@@ -514,4 +513,137 @@ footer a { color: var(--texte-doux); }
 @media (max-width: 560px) {
   .carrousel img { width: 160px; }
   .titre-app img { width: 46px; height: 46px; }
+}
+
+/* =========================================================================
+   Menu mobile
+   ========================================================================= */
+/* Le bouton burger n'existe qu'en dessous de 700 px, et les onglets de bureau
+   disparaissent au même seuil : deux navigations dans le HTML, une seule
+   visible à la fois. C'est plus simple à maintenir qu'une navigation unique
+   qu'il faudrait faire changer de forme. */
+.burger { display: none; position: relative; }
+
+@media (max-width: 700px) {
+  .entete-interieur > nav { display: none; }
+  .burger { display: block; }
+  /* Le logo passe à droite : `margin-left: auto` le pousse contre le bord. */
+  .entete-interieur .logo { margin-left: auto; }
+
+  .burger > summary {
+    list-style: none;
+    cursor: pointer;
+    width: 40px; height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-left: -8px;
+  }
+  .burger > summary::-webkit-details-marker { display: none; }
+  .burger > summary::marker { content: ""; }
+
+  /* Trois traits dessinés en CSS : la barre centrale est l'élément, les deux
+     autres ses pseudo-éléments. Pas d'image à charger. */
+  .barres, .barres::before, .barres::after {
+    display: block;
+    width: 22px;
+    height: 2px;
+    border-radius: 2px;
+    background: var(--texte);
+  }
+  .barres { position: relative; }
+  .barres::before, .barres::after { content: ""; position: absolute; left: 0; }
+  .barres::before { top: -7px; }
+  .barres::after { top: 7px; }
+  .burger[open] > summary .barres { background: var(--ardoise); }
+  .burger[open] > summary .barres::before,
+  .burger[open] > summary .barres::after { background: var(--ardoise); }
+
+  .menu-mobile {
+    position: absolute;
+    top: calc(100% + 12px);
+    left: -8px;
+    z-index: 100;
+    display: flex;
+    flex-direction: column;
+    /* `align-items: stretch` annule le centrage hérité de la règle `nav`
+       générale : sans lui, les entrées du menu se retrouvaient centrées au
+       lieu d'être alignées à gauche. */
+    align-items: stretch;
+    gap: 0;
+    width: 210px;
+    padding: 6px;
+    background: var(--carte);
+    border: 1px solid var(--filet);
+    border-radius: 12px;
+    box-shadow: 0 14px 34px rgba(0,0,0,.16);
+  }
+  .menu-mobile > a, .sous-menu > summary {
+    display: flex;
+    align-items: center;
+    padding: 11px 12px;
+    border-radius: 8px;
+    color: var(--texte);
+    text-decoration: none;
+    font-size: 15px;
+  }
+  .menu-mobile > a:hover, .sous-menu > summary:hover { background: var(--fond); }
+
+  .sous-menu { position: relative; }
+  .sous-menu > summary {
+    cursor: pointer;
+    list-style: none;
+    justify-content: space-between;
+  }
+  .sous-menu > summary::-webkit-details-marker { display: none; }
+  .sous-menu > summary::marker { content: ""; }
+  /* Chevron vers la droite : le panneau des produits s'ouvre sur le côté. */
+  .sous-menu > summary::after {
+    content: "";
+    width: 6px; height: 6px;
+    border-right: 1.5px solid var(--ardoise);
+    border-bottom: 1.5px solid var(--ardoise);
+    transform: rotate(-45deg);
+  }
+  .sous-menu[open] > summary { color: var(--ardoise); }
+
+  .produits {
+    position: absolute;
+    top: -6px;
+    left: calc(100% + 8px);
+    width: 200px;
+    padding: 6px;
+    background: var(--carte);
+    border: 1px solid var(--filet);
+    border-radius: 12px;
+    box-shadow: 0 14px 34px rgba(0,0,0,.16);
+  }
+  .produits a {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px;
+    border-radius: 8px;
+    color: var(--texte);
+    text-decoration: none;
+    font-size: 15px;
+  }
+  .produits a:hover { background: var(--fond); }
+  .produits img { width: 28px; height: 28px; border-radius: 8px; flex: none; }
+}
+
+/* En dessous de 430 px, deux panneaux côte à côte ne tiennent plus dans
+   l'écran : la liste des produits se déplie alors sous « Produits ». */
+@media (max-width: 430px) {
+  .produits {
+    position: static;
+    width: auto;
+    margin: 2px 0 4px 10px;
+    border: 0;
+    border-left: 2px solid var(--filet);
+    border-radius: 0;
+    box-shadow: none;
+    padding: 0 0 0 6px;
+  }
+  .sous-menu[open] > summary::after { transform: rotate(45deg); }
 }

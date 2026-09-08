@@ -6,13 +6,12 @@
 // `details` sait s'ouvrir seul, mais il n'a aucune notion de « clic en
 // dehors » : c'est la seule chose que le navigateur ne fait pas pour nous.
 function fermerLesMenus() {
-  document.querySelectorAll('details.menu[open]').forEach(function (menu) {
-    menu.open = false;
-  });
+  document.querySelectorAll('details.menu[open], details.burger[open], details.sous-menu[open]')
+    .forEach(function (menu) { menu.open = false; });
 }
 
 document.addEventListener('click', function (evenement) {
-  document.querySelectorAll('details.menu[open]').forEach(function (menu) {
+  document.querySelectorAll('details.menu[open], details.burger[open]').forEach(function (menu) {
     if (!menu.contains(evenement.target)) menu.open = false;
   });
 });
