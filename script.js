@@ -36,3 +36,19 @@ document.querySelectorAll('.zone-carrousel').forEach(function (zone) {
     });
   });
 });
+
+// Bouton « Tout déplier » de la page Méthode. Il bascule : si une seule étape
+// est encore fermée, on ouvre tout ; sinon on referme tout. Le libellé suit,
+// sinon le bouton ment sur ce qu'il va faire.
+document.querySelectorAll('[data-tout-deplier]').forEach(function (bouton) {
+  var etapes = document.querySelectorAll('.etapes details');
+  if (!etapes.length) return;
+  var deplier = bouton.textContent.trim();
+  var replier = bouton.dataset.libelleReplier || 'Tout replier';
+
+  bouton.addEventListener('click', function () {
+    var resteFerme = Array.prototype.some.call(etapes, function (e) { return !e.open; });
+    etapes.forEach(function (e) { e.open = resteFerme; });
+    bouton.textContent = resteFerme ? replier : deplier;
+  });
+});

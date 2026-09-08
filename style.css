@@ -455,6 +455,26 @@ footer a { color: var(--texte-doux); }
   color: var(--texte-doux);
   font-size: 15px;
 }
+/* Les étapes fusionnées gardent le nom de leurs sous-parties : le lecteur
+   retrouve le vocabulaire du devis, sans multiplier les accordéons. */
+.etapes details .sous-etape {
+  margin: 16px 0 2px 40px;
+  color: var(--texte);
+  font-family: "Space Grotesk", system-ui, sans-serif;
+  font-weight: 600;
+  font-size: 15px;
+}
+.etapes details .sous-etape:first-of-type { margin-top: 8px; }
+
+/* Le bouton « Tout déplier » se pose au-dessus de la liste, aligné à droite :
+   c'est une commande, pas un appel à l'action, il ne doit pas rivaliser avec
+   « Demander un devis ». */
+.barre-outils {
+  display: flex;
+  justify-content: flex-end;
+  margin: 26px 0 -14px;
+}
+.barre-outils .cta { font-size: 14px; padding: 6px 16px; }
 
 /* ----------------------------------------------------------- repères */
 .reperes { display: grid; grid-template-columns: repeat(auto-fit, minmax(210px, 1fr)); gap: 14px; margin: 26px 0; }
