@@ -1,0 +1,126 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Sourire — télécharger l'application</title>
+<meta name="description" content="Télécharger Sourire sur iPhone ou Android.">
+
+<!-- Page d'aiguillage, pas une page de contenu : elle ne doit pas être
+     indexée, sinon elle concurrence /sourire/ dans les résultats et Google
+     signale un contenu pauvre. Elle n'est pas non plus dans sitemap.xml. -->
+<meta name="robots" content="noindex, follow">
+<link rel="canonical" href="https://mxsstudio.com/sourire/">
+<link rel="icon" href="/assets/img/favicon.ico" sizes="any">
+<link rel="icon" href="/assets/img/favicon-32.png" type="image/png">
+<link rel="apple-touch-icon" href="/assets/img/apple-touch-icon-180.png">
+
+<!-- Styles écrits ici plutôt que dans /style.css : cette page doit s'afficher
+     et rediriger avant même qu'une feuille externe soit téléchargée. Un QR
+     scanné en salle d'attente l'est souvent en 4G faible. -->
+<style>
+  :root { --orange:#FF8000; --brun:#512902; --creme:#FFFBF5; }
+  * { box-sizing:border-box; }
+  html,body { margin:0; padding:0; }
+  body {
+    background:var(--orange); color:var(--brun);
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+    min-height:100vh; display:flex; align-items:center; justify-content:center;
+    padding:24px 16px;
+  }
+  main { width:100%; max-width:420px; text-align:center; }
+  h1 { font-size:2rem; margin:0 0 8px; letter-spacing:-.01em; }
+  p.accroche { font-size:1.05rem; line-height:1.5; margin:0 0 32px; }
+  .boutons { display:flex; flex-direction:column; gap:12px; }
+  a.bouton {
+    display:block; background:var(--creme); color:var(--brun);
+    text-decoration:none; font-size:1.05rem; font-weight:600;
+    padding:16px 20px; border-radius:14px; border:2px solid var(--brun);
+  }
+  a.bouton[aria-disabled="true"] { opacity:.55; }
+  p.bas { margin:32px 0 0; font-size:.85rem; line-height:1.5; }
+  p.bas a { color:var(--brun); }
+  /* Masqué le temps que le script décide, pour ne pas voir les deux boutons
+     apparaître puis disparaître. Sans JavaScript, la règle noscript
+     ci-dessous les réaffiche. */
+  body.redirection main { visibility:hidden; }
+</style>
+<noscript><style> body.redirection main { visibility:visible; } </style></noscript>
+</head>
+<body>
+<main>
+  <h1>Sourire</h1>
+  <p class="accroche">Votre bocal à bonheur, 100&nbsp;% privé.<br>Choisissez votre boutique&nbsp;:</p>
+
+  <div class="boutons">
+    <a class="bouton" id="lien-ios" href="/sourire/">Télécharger sur iPhone</a>
+    <a class="bouton" id="lien-android" href="/sourire/">Télécharger sur Android</a>
+  </div>
+
+  <p class="bas">
+    <a href="/sourire/">En savoir plus sur Sourire</a><br>
+    MxS&nbsp;Studio · <a href="/sourire/confidentialite/">Confidentialité</a>
+  </p>
+</main>
+
+<script>
+(function () {
+  // ------------------------------------------------------------------
+  // À RENSEIGNER le jour de la sortie iOS : l'identifiant numérique de
+  // l'app, dans App Store Connect → Informations sur l'app → Apple ID.
+  // Tant qu'il vaut null, le bouton iPhone reste inactif et renvoie vers
+  // la page de présentation plutôt que vers une fiche inexistante.
+  // ------------------------------------------------------------------
+  var APPLE_ID = null;
+
+  var PACKAGE_ANDROID = 'com.margauxsilva.sourire';
+
+  // Étiquettes de campagne : Play Console les remonte dans « Acquisition
+  // d'utilisateurs → Sources de trafic ». Modifier utm_content pour
+  // distinguer plusieurs supports ou plusieurs lieux de dépôt.
+  var REFERRER = encodeURIComponent(
+    'utm_source=affiche&utm_medium=qr&utm_campaign=salles_attente'
+  );
+
+  var LIEN_ANDROID = 'https://play.google.com/store/apps/details?id='
+    + PACKAGE_ANDROID + '&referrer=' + REFERRER;
+
+  // Apple n'accepte pas d'étiquette de campagne improvisée dans l'URL : il
+  // faut un lien de campagne généré dans App Store Connect → Analyses →
+  // Campagnes, qui remplacera cette ligne le jour où tu en veux un.
+  var LIEN_IOS = APPLE_ID ? 'https://apps.apple.com/fr/app/id' + APPLE_ID : null;
+
+  var boutonIOS = document.getElementById('lien-ios');
+  var boutonAndroid = document.getElementById('lien-android');
+
+  boutonAndroid.href = LIEN_ANDROID;
+  if (LIEN_IOS) {
+    boutonIOS.href = LIEN_IOS;
+  } else {
+    boutonIOS.textContent = 'Bientôt sur iPhone';
+    boutonIOS.setAttribute('aria-disabled', 'true');
+  }
+
+  var ua = navigator.userAgent || '';
+
+  // iPadOS 13 et suivants se présentent comme un Mac de bureau : le test du
+  // tactile les démasque, sans quoi un iPad resterait sur la page de secours.
+  var estIOS = /iPad|iPhone|iPod/.test(ua) ||
+               (/Macintosh/.test(ua) && typeof document.ontouchend !== 'undefined');
+
+  // On exclut liseuses et téléviseurs sous Android, qui n'ont pas le Play Store.
+  var estAndroid = /Android/.test(ua) && !/Silk|Kindle|TV|Tablet PC/.test(ua);
+
+  var destination = estAndroid ? LIEN_ANDROID : (estIOS ? LIEN_IOS : null);
+
+  if (destination) {
+    document.body.className = 'redirection';
+    // replace() et non href : sinon le retour arrière du navigateur ramène
+    // ici, et la page repart aussitôt vers la boutique. L'utilisateur est
+    // piégé et ne peut plus revenir en arrière.
+    location.replace(destination);
+  }
+})();
+</script>
+</body>
+</html>
